@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RT‑Cache: Retrieval‑as‑Control for Real‑Time Robot Manipulation</title>
+  <meta name="description" content="RT‑Cache is a training‑free retrieval‑as‑control pipeline that replays multi‑step action snippets from a large trajectory memory, enabling real‑time control on modest GPUs." />
+  <meta property="og:title" content="RT‑Cache: Retrieval‑as‑Control" />
+  <meta property="og:description" content="Training‑free, multi‑step retrieval that turns experience into a controller." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og_image.png" />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root{
+      --bg:#0b1020; /* deep slate */
+      --panel:#0f172a; /* slate-900 */
+      --ink:#e5e7eb; /* slate-200 */
+      --muted:#a7b0c0; /* slate-400 */
+      --brand:#7dd3fc; /* sky-300 */
+      --brand-2:#34d399; /* emerald-400 */
+      --ring:rgba(125,211,252,.35);
+      --card:#111827; /* gray-900 */
+      --code:#0a0f1a;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius-sm:12px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;text-rendering:optimizeLegibility}
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,16,32,.9),rgba(11,16,32,.65) 60%,rgba(11,16,32,0));backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(125,211,252,.12)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .nav a.brand{font-weight:800;letter-spacing:.2px;color:white}
+    .nav .menu{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1120;padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:var(--shadow);border:0}
+    .btn.secondary{background:#0b1328;color:var(--ink);border:1px solid rgba(125,211,252,.18);box-shadow:none}
+    .hero{padding:56px 0 32px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero h1{font-size:44px;line-height:1.1;margin:8px 0 12px}
+    .hero p.lead{color:var(--muted);font-size:18px;margin:0 0 22px}
+    .badge{display:inline-block;font-weight:700;color:#06101a;background:linear-gradient(135deg,var(--brand),#e879f9);padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px}
+    .card{background:var(--panel);border:1px solid rgba(125,211,252,.12);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#0b1328;border:1px solid rgba(125,211,252,.18);color:var(--muted);font-size:12px}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width: 980px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+    section{padding:42px 0}
+    section h2{font-size:28px;line-height:1.2;margin:0 0 14px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .kpi{background:var(--card);border:1px solid rgba(125,211,252,.12);border-radius:var(--radius-sm);padding:16px}
+    .kpi .big{font-size:24px;font-weight:800}
+    figure{margin:0}
+    figcaption{color:var(--muted);font-size:14px;margin-top:10px}
+    .table{width:100%;border-collapse:collapse;border-spacing:0;font-size:14px}
+    .table th,.table td{padding:10px 12px;border-bottom:1px solid rgba(125,211,252,.10)}
+    .table th{color:var(--muted);text-align:left;font-weight:700}
+    .code{background:var(--code);border:1px solid rgba(125,211,252,.12);border-radius:12px;padding:14px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:13px}
+    .footer{padding:36px 0 48px;color:var(--muted);border-top:1px solid rgba(125,211,252,.12);margin-top:30px}
+    .note{color:var(--muted);font-size:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(125,211,252,.18);background:#0b1328;color:var(--ink);padding:6px 10px;border-radius:999px;font-size:12px}
+    .row{display:flex;flex-wrap:wrap;gap:10px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top">RT‑Cache</a>
+      <nav class="menu">
+        <a href="#paper">Paper</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#ablations">Ablations</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="badge">Training‑free • Retrieval‑as‑Control • Real‑time</span>
+        <h1>RT‑Cache: Turning Experience into a Real‑Time Controller</h1>
+        <p class="lead">
+          A simple deploy‑time pipeline that caches diverse image–action trajectories in a unified vector memory and
+          <strong>replays multi‑step snippets</strong> on demand—no fine‑tuning, sub‑second search at million scale.
+        </p>
+        <div class="row" style="margin:14px 0 20px">
+          <a class="btn" href="#paper">📄 Paper (PDF)</a>
+          <a class="btn secondary" href="https://rt-cache.github.io/" target="_blank" rel="noopener">🔗 Project Page</a>
+          <a class="btn secondary" href="#video">▶️ Video</a>
+          <span class="chip">Code: <a href="https://github.com/your-org/rt-cache" target="_blank" rel="noopener">github.com/your‑org/rt‑cache</a></span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="big">~2×</div><div class="note">higher success than VINN</div></div>
+          <div class="kpi"><div class="big">~30%</div><div class="note">faster completion time</div></div>
+          <div class="kpi"><div class="big">< 1s</div><div class="note">lookup @ million scale</div></div>
+          <div class="kpi"><div class="big">0 train</div><div class="note">no deploy‑time tuning</div></div>
+        </div>
+      </div>
+      <figure class="card" style="padding:12px">
+        <img src="assets/fig_pipeline_overview.png" alt="RT‑Cache overview pipeline: memory building on the left and retrieval‑and‑replay on the right." />
+        <figcaption>
+          <strong>Overview.</strong> Build a multi‑dataset <em>Memory</em> of image–action pairs; at test time, embed the current frame, retrieve top‑K matches, and replay the best \(N\)-step snippet.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- PAPER / ABSTRACT -->
+    <section id="paper" class="card" style="padding:20px">
+      <h2>Paper</h2>
+      <p class="note">Replace links below after you upload the PDF.</p>
+      <div class="row">
+        <a class="btn" href="assets/rt_cache_paper.pdf" target="_blank" rel="noopener">Download PDF</a>
+        <a class="btn secondary" href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv</a>
+        <a class="btn secondary" href="#bibtex">Copy BibTeX</a>
+      </div>
+    </section>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <div class="grid cols-2">
+        <div class="card" style="padding:18px">
+          <p>
+            Real robots must repeat the <em>same behavior</em> in <em>new environments</em> with <em>very little new data</em>, yet modern controllers either incur heavy
+            per‑step inference or require deployment‑time fine‑tuning. We present <strong>RT‑Cache</strong>, a training‑free <em>retrieval‑as‑control</em> pipeline that caches
+            diverse image–action trajectories in a unified vector memory and, at test time, embeds the current frame to retrieve and <em>replay</em> multi‑step snippets,
+            replacing per‑step model calls. A hierarchical search keeps lookups sub‑second at million scale, shifting cost from compute to storage and enabling
+            real‑time control on modest GPUs. Across real‑robot tasks and large open logs, RT‑Cache achieves higher success and lower completion time than strong
+            retrieval baselines (≈2× success, ~30% faster), and a single‑episode anchoring study shows immediate adaptation to a contact‑rich task without
+            fine‑tuning.
+          </p>
+          <div class="row" style="margin-top:8px">
+            <span class="pill">Training‑free</span>
+            <span class="pill">Multi‑step replay</span>
+            <span class="pill">Hierarchical retrieval</span>
+            <span class="pill">Real‑time on modest GPU</span>
+          </div>
+        </div>
+        <figure class="card" style="padding:12px">
+          <img src="assets/fig_teaser.png" alt="Teaser montage of robot executing retrieved snippets from wrist/side/front cameras." />
+          <figcaption><strong>Teaser.</strong> Replay coherent \(N\)-step segments instead of per‑timestep averaging.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method">
+      <h2>Method</h2>
+      <div class="grid cols-3">
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 6px">1) Memory Builder</h3>
+          <p class="note">Embed frames with frozen vision features (DINOv2 + SigLIP), store vectors in Qdrant; actions and metadata in MongoDB.</p>
+          <p class="note">Image keys are universal across morphologies; execution uses a unified Cartesian action space.</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 6px">2) Hierarchical Retrieval</h3>
+          <p class="note">Centroid/partition filter → sample a local index → final k‑NN over candidates. Sub‑second lookup at million scale.</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 6px">3) Multi‑Step Replay</h3>
+          <p class="note">Top match (or top‑K aggregate) provides the next \(N\) actions; horizon \(N\in\{1,3,5\}\) balances reactivity and speed.</p>
+        </div>
+      </div>
+      <figure class="card" style="padding:12px;margin-top:16px">
+        <img src="assets/fig_pipeline_detail.png" alt="Detailed pipeline diagram with memory, hierarchical search, and N‑step replay." />
+        <figcaption><strong>Detailed pipeline.</strong> A light‑weight index keeps memory append‑only and searchable.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results">
+      <h2>Results</h2>
+      <div class="grid cols-2">
+        <figure class="card" style="padding:12px">
+          <img src="assets/fig_results_matrix.png" alt="Outcome matrix across camera views and objects; RT‑Cache shows higher success and lower time." />
+          <figcaption><strong>Performance.</strong> Higher success with lower median time vs. VINN; Behavior‑Retrieval policies exhibit cross‑domain failures.</figcaption>
+        </figure>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 6px">Quantitative summary</h3>
+          <table class="table">
+            <thead>
+              <tr><th>Method</th><th>Success ↑</th><th>Time ↓</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>RT‑Cache</td><td>~2× VINN</td><td>~30% faster</td><td>sub‑second search</td></tr>
+              <tr><td>VINN</td><td>baseline</td><td>slower</td><td>per‑timestep copying</td></tr>
+              <tr><td>Behavior Retrieval</td><td>varies</td><td>‑</td><td>offline policy; no test‑time retrieval</td></tr>
+            </tbody>
+          </table>
+          <p class="note" style="margin-top:8px">First‑person (wrist) configurations are especially strong; third‑person‑front improves with a few in‑domain exemplars.</p>
+        </div>
+      </div>
+      <div class="grid cols-3" style="margin-top:16px">
+        <div class="card" style="padding:16px"><h3>Object robustness</h3><p class="note">With a few in‑domain episodes, success 96% (wrist), 93% (front), 52% (side). Errors are near‑misses rather than wrong‑turns.</p></div>
+        <div class="card" style="padding:16px"><h3>Horizon sensitivity</h3><p class="note">N=1 is reactive but chatty; N=5 is fastest when perfect; N=3 best trade‑off.</p></div>
+        <div class="card" style="padding:16px"><h3>Embedding choice</h3><p class="note">DINOv2 ≈ 23/27 successes vs. CLIP 11/27; concat with SigLIP improves recall at negligible cost.</p></div>
+      </div>
+    </section>
+
+    <!-- ABLATIONS -->
+    <section id="ablations">
+      <h2>Ablations</h2>
+      <div class="grid cols-2">
+        <figure class="card" style="padding:12px">
+          <img src="assets/fig_trajectories.png" alt="Overlayed end‑effector paths and snippet sequences from multiple cameras." />
+          <figcaption><strong>Trajectory similarity.</strong> Replayed paths follow the ground‑truth geometry closely; viewpoint‑aligned retrieval reduces drift.</figcaption>
+        </figure>
+        <figure class="card" style="padding:12px">
+          <img src="assets/fig_single_episode.png" alt="Single‑episode anchoring experiment before/after." />
+          <figcaption><strong>Single‑episode anchoring.</strong> One exemplar immediately unlocks a new contact‑rich task—no fine‑tuning.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- RESOURCES / BIBTEX -->
+    <section id="resources">
+      <h2>Resources</h2>
+      <div class="grid cols-2">
+        <div class="card" style="padding:16px">
+          <h3 id="bibtex" style="margin:6px 0">BibTeX</h3>
+          <pre class="code" id="bib">
+@article{rtcache2025,
+  title={RT-Cache: Retrieval-as-Control for Real-Time Robot Manipulation},
+  author={Your, Name and Coauthor, Name and Others},
+  journal={arXiv preprint arXiv:2501.01234},
+  year={2025}
+}
+          </pre>
+          <button class="btn secondary" onclick="copyBib()">Copy to clipboard</button>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="https://github.com/your-org/rt-cache" target="_blank" rel="noopener">Code (GitHub)</a></li>
+            <li><a href="assets/rt_cache_paper.pdf" target="_blank" rel="noopener">Paper (PDF)</a></li>
+            <li><a href="#video">Video / Demos</a></li>
+            <li><a href="https://rt-cache.github.io/" target="_blank" rel="noopener">Project page</a></li>
+          </ul>
+          <p class="note">Replace placeholders (links and images in <code>assets/</code>) before publishing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="card" style="padding:16px">
+      <h2>Video</h2>
+      <div class="note">Embed a YouTube/HTML5 video here.</div>
+      <div style="position:relative;padding-top:56.25%">
+        <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="RT‑Cache video"></iframe>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="row">
+        <span>© 2025 RT‑Cache Authors</span>
+        <span>·</span>
+        <span>Contact: <a href="mailto:contact@rt-cache.org">contact@rt-cache.org</a></span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function copyBib(){
+      const txt = document.getElementById('bib').innerText.trim();
+      navigator.clipboard.writeText(txt).then(()=>{
+        alert('BibTeX copied');
+      });
+    }
+  </script>
+</body>
+</html>
+
