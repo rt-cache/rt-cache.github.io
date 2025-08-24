@@ -97,317 +97,166 @@
   </div>
 </section>
 
-<section class="hero teaser teaser-video">
-  <div class="container is-max-desktop has-text-centered">
-    <div class="hero-body">
-      <iframe width="80%" height="450" src="https://www.youtube.com/embed/7mLlhhwMFM8?autoplay=1&mute=1&loop=1&playlist=7mLlhhwMFM8" 
-              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen style="border-radius: 8px;"></iframe>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">RT‑Cache</span> turns experience into a real‑time controller
-        through multi‑step retrieval‑as‑control.
-      </h2>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-workflow has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/0JpAhpyIkLo" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">RT-Cache Workflow</p>
-        </div>
-        <div class="item item-normal has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/bZ33AAch6AY" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">Normal Speed Execution</p>
-        </div>
-        <div class="item item-fast has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/IX9aDMdD_SM" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">Fast Speed Execution</p>
-        </div>
-        <div class="item item-unseen has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/XPnO6Tkmmns" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">Unseen Objects Generalization</p>
-        </div>
-        <div class="item item-vinn has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/pWgg2CqvoFY" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">VINN Baseline Failure</p>
-        </div>
-        <div class="item item-behavior has-text-centered">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/XI5nWP60XmI" 
-                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen style="border-radius: 8px;"></iframe>
-          <p style="margin-top: 10px; font-weight: bold;">Behavior Retrieval Failure</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+<!-- Section 1: Main Video -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Real robots must repeat the <em>same behavior</em> in <em>new environments</em> with <em>very little new data</em>, yet modern controllers either incur heavy
-            per‑step inference or require deployment‑time fine‑tuning.
-          </p>
-          <p>
-            We present <strong>RT‑Cache</strong>, a training‑free <em>retrieval‑as‑control</em> pipeline that caches
-            diverse image–action trajectories in a unified vector memory and, at test time, embeds the current frame to retrieve and <em>replay</em> multi‑step snippets,
-            replacing per‑step model calls. A hierarchical search keeps lookups sub‑second at million scale, shifting cost from compute to storage and enabling
-            real‑time control on modest GPUs.
-          </p>
-          <p>
-            Across real‑robot tasks and large open logs, <span class="dnerf">RT‑Cache</span> achieves higher success and lower completion time than strong
-            retrieval baselines (≈2× success, ~30% faster), and a single‑episode anchoring study shows immediate adaptation to a contact‑rich task without
-            fine‑tuning.
-          </p>
-        </div>
+      <div class="column is-full-width">
+        <iframe width="100%" height="600" src="https://www.youtube.com/embed/7mLlhhwMFM8" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen style="border-radius: 8px;"></iframe>
       </div>
     </div>
-    <!--/ Abstract. -->
+  </div>
+</section>
 
-    <!-- Method -->
+<!-- Section 2: Main Figure 1 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Method Figure 2 -->
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified has-text-centered">
-          <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
-          <p style="margin-top: 20px;">
-            <strong>RT-Cache Architecture:</strong> Our training-free retrieval-as-control pipeline consists of three main components: 
-            (1) a unified vector memory that stores diverse image-action trajectories, (2) hierarchical search for efficient retrieval 
-            at million scale, and (3) multi-step snippet replay that replaces per-step model inference with cached action sequences.
-          </p>
-        </div>
+        <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
       </div>
     </div>
-    <!--/ Method -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div style="height: 300px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-          <div style="text-align: center; color: #666;">
-            <h3 style="margin: 0; font-size: 18px;">Paper Video</h3>
-            <p style="margin: 5px 0 0 0; font-size: 14px;">To be updated soon</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
-
+<!-- Section 4: Result Figure 4 -->
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Memory Building</h2>
-          <p>
-            <i>RT‑Cache</i> builds a unified vector memory from diverse image–action trajectories.
-            The memory stores universal vision features across different morphologies and tasks.
-          </p>
-          <div style="height: 200px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-            <div style="text-align: center; color: #666;">
-              <h4 style="margin: 0; font-size: 16px;">Memory Building Demo</h4>
-              <p style="margin: 5px 0 0 0; font-size: 12px;">To be updated soon</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Hierarchical Retrieval</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              Our hierarchical search enables sub‑second lookup at million scale through
-              centroid filtering and local indexing for efficient multi‑step replay.
-            </p>
-            <div style="height: 200px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-              <div style="text-align: center; color: #666;">
-                <h4 style="margin: 0; font-size: 16px;">Hierarchical Search Demo</h4>
-                <p style="margin: 5px 0 0 0; font-size: 12px;">To be updated soon</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Multi‑Step Replay</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Action Snippet Replay</h3>
-        <div class="content has-text-justified">
-          <p>
-            RT‑Cache replays coherent N‑step action snippets instead of per‑timestep copying.
-            Use the slider to see how different horizon lengths (N=1,3,5) affect the replay behavior.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <div style="height: 150px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-              <div style="text-align: center; color: #666; font-size: 12px;">
-                Query Frame<br>To be updated soon
-              </div>
-            </div>
-            <p>Query Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div style="height: 150px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-              <div style="text-align: center; color: #666; font-size: 12px;">
-                Interactive Demo<br>To be updated soon
-              </div>
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <div style="height: 150px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-              <div style="text-align: center; color: #666; font-size: 12px;">
-                Retrieved Snippet<br>To be updated soon
-              </div>
-            </div>
-            <p class="is-bold">Retrieved Snippet</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Real‑Time Robot Execution</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">RT‑Cache</span>, robots can execute retrieved action snippets
-            in real‑time, achieving higher success rates with faster completion times.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <div style="height: 300px; width: 75%; margin: 0 auto; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd;">
-            <div style="text-align: center; color: #666;">
-              <h4 style="margin: 0; font-size: 16px;">Robot Execution Demo</h4>
-              <p style="margin: 5px 0 0 0; font-size: 12px;">To be updated soon</p>
-            </div>
-          </div>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-    <!-- Results -->
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Results</h2>
-        
-        <h3 class="title is-4">Performance Comparison</h3>
-        <div class="content has-text-justified has-text-centered">
-          <img src="static/images/fig4.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
-          <p>
-            <strong>Real Robot Evaluation:</strong> RT-Cache achieves significantly higher success rates compared to baseline retrieval methods 
-            across multiple manipulation tasks, demonstrating the effectiveness of multi-step snippet replay.
-          </p>
-        </div>
-
-        <h3 class="title is-4">Generalization Results</h3>
-        <div class="content has-text-justified has-text-centered">
-          <img src="static/images/fig5.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
-          <p>
-            <strong>Cross-Environment Generalization:</strong> Our method shows robust performance across different environments 
-            and object configurations, maintaining high success rates even with unseen objects and backgrounds.
-          </p>
-        </div>
-
-        <h3 class="title is-4">Ablation Study</h3>
-        <div class="content has-text-justified has-text-centered">
-          <img src="static/images/fig6.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
-          <p>
-            <strong>Component Analysis:</strong> Ablation results demonstrate the importance of each component in our pipeline, 
-            with hierarchical search and multi-step replay contributing significantly to overall performance.
-          </p>
-        </div>
-
-        <h3 class="title is-4">Efficiency Analysis</h3>
-        <div class="content has-text-justified has-text-centered">
-          <img src="static/images/table1.png" style="width: 80%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
-          <p>
-            <strong>Computational Efficiency:</strong> RT-Cache achieves real-time control with significantly lower inference times 
-            compared to transformer-based policies while maintaining higher success rates.
-          </p>
-        </div>
+        <img src="static/images/fig4.png" style="width: 100%; height: auto; border-radius: 8px;" />
       </div>
     </div>
-    <!--/ Results -->
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Work</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            RT‑Cache builds upon recent advances in retrieval‑based robot learning and memory‑augmented control.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2203.12601">VINN</a> pioneered visual imitation through nearest neighbor retrieval for robot manipulation tasks.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2210.06407">Behavior Retrieval</a> and other works explore offline policy retrieval but lack test‑time adaptation capabilities.
-          </p>
-          <p>
-            Recent transformer‑based policies like <a href="https://robotics-transformer1.github.io/">RT‑1</a> and <a href="https://robotics-transformer-x.github.io/">RT‑X</a> require heavy per‑step inference.
-          </p>
-          <p>
-            Our hierarchical retrieval approach enables million‑scale memory search while maintaining sub‑second lookup times for real‑time control.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
+
+<!-- Section 5: Result Figure 5 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <img src="static/images/fig5.png" style="width: 100%; height: auto; border-radius: 8px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Result Figure 6 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <img src="static/images/fig6.png" style="width: 100%; height: auto; border-radius: 8px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Efficiency Table -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Efficiency Analysis</h2>
+        <img src="static/images/table1.png" style="width: 80%; height: auto; border-radius: 8px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8: Main Workflow Video -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Main Workflow</h2>
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/0JpAhpyIkLo" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen style="border-radius: 8px;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9: Comparing Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparing Results</h2>
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4">VINN Failure</h3>
+            <iframe width="100%" height="350" src="https://www.youtube.com/embed/pWgg2CqvoFY" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 8px;"></iframe>
+          </div>
+          <div class="column">
+            <h3 class="title is-4">Behavior Retrieval Failure</h3>
+            <iframe width="100%" height="350" src="https://www.youtube.com/embed/XI5nWP60XmI" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 8px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10: Faster Actions -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Faster Actions</h2>
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4">Normal Speed</h3>
+            <iframe width="100%" height="350" src="https://www.youtube.com/embed/bZ33AAch6AY" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 8px;"></iframe>
+          </div>
+          <div class="column">
+            <h3 class="title is-4">Fast Speed</h3>
+            <iframe width="100%" height="350" src="https://www.youtube.com/embed/IX9aDMdD_SM" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 8px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 11: Unseen Objects -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Unseen Objects</h2>
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/XPnO6Tkmmns" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen style="border-radius: 8px;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 <section class="section" id="BibTeX">
