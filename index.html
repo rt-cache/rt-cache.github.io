@@ -115,7 +115,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
+        <h2 class="title is-3">Fig. 1 — RT-Cache at a glance</h2>
         <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> We turn prior robot experience into an append-only memory of image–action snippets. At deployment, the current camera frame is embedded, matched to similar snippets, and the best short segment is replayed for N steps; then we re-query and repeat. This training-free "retrieval-as-control" loop gives real-time, few-shot adaptation by simply appending new episodes.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -126,8 +132,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">Fig. 2 — From terabytes to real time</h2>
         <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> Heterogeneous logs are standardized (sample rate + Cartesian EEF actions) and stored two ways: raw data in a Trajectory DB and embeddings in a Vector DB. At test time we run a hierarchical search—dataset-centroid filter → small local index → cosine k-NN—to fetch a snippet and replay its action vectors for the next N steps. This replaces per-step model calls and keeps lookups sub-second at million scale.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -138,8 +149,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Results</h2>
+        <h2 class="title is-3">Fig. 4 — Bowl-reach: outcomes, speed, and path quality</h2>
         <img src="static/images/fig4.png" style="width: 100%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> (a) Outcome matrix: RT-Cache succeeds across more camera views/placements than VINN; Behavior-Retrieval and OpenVLA-OFT often exit OOS (out-of-workspace). (b) Successful trials finish faster with RT-Cache (lower median, tighter spread) because multi-step replay reduces corrective micro-moves. (c) 3D paths: RT-Cache closely tracks ground truth while VINN drifts.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -150,7 +166,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
+        <h2 class="title is-3">Fig. 5 — Ablations and qualitative analysis</h2>
         <img src="static/images/fig5.png" style="width: 100%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> (A) Object robustness: with a few in-domain episodes, RT-Cache is reliable across bowl/cup/bottle and views. (B) Horizon sensitivity: choosing snippet length N trades speed vs reactivity; N=3 is a good balance in our setup. (C) Viewpoint-aligned replay: retrieval stays within the active camera and advances coherently over steps. (D) Typical failures: near-misses or minor pose offsets under occlusion or viewpoint change.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -161,7 +183,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
+        <h2 class="title is-3">Fig. 6 — Single-episode anchoring (pushing task)</h2>
         <img src="static/images/fig6.png" style="width: 100%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> With no in-domain data, we add one short example to memory—no training, no fine-tuning. RT-Cache retrieves that exemplar and replays it to produce a trajectory that qualitatively matches ground truth, demonstrating immediate adaptation through retrieval-as-control.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -172,8 +200,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Efficiency Analysis</h2>
+        <h2 class="title is-3">Table I — Compute & storage budget</h2>
         <img src="static/images/table1.png" style="width: 80%; height: auto; border-radius: 8px;" />
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            <strong>Caption:</strong> RT-Cache runs on 8–10 GB GPU and shifts cost to storage (≈ 100 GB for embeddings/metadata). It performs no gradient updates at deployment (frozen encoders; build ANN index only), unlike VINN/Behavior-Retrieval/OpenVLA-OFT which require training or fine-tuning. Net: we trade SSD space for lower online compute and real-time control.
+          </p>
+        </div>
       </div>
     </div>
   </div>
