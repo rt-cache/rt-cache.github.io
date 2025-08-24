@@ -110,16 +110,16 @@
   </div>
 </section>
 
-<!-- Section 2: Main Figure 1 -->
+<!-- RT-Cache Overview -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Fig. 1 — RT-Cache at a glance</h2>
-        <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <h2 class="title is-3">RT-Cache Overview</h2>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
           <p>
-            <strong>Caption:</strong> We turn prior robot experience into an append-only memory of image–action snippets. At deployment, the current camera frame is embedded, matched to similar snippets, and the best short segment is replayed for N steps; then we re-query and repeat. This training-free "retrieval-as-control" loop gives real-time, few-shot adaptation by simply appending new episodes.
+            We turn prior robot experience into an append-only memory of image–action snippets. At deployment, the current camera frame is embedded, matched to similar snippets, and the best short segment is replayed for N steps; then we re-query and repeat. This training-free "retrieval-as-control" loop gives real-time, few-shot adaptation by simply appending new episodes.
           </p>
         </div>
       </div>
@@ -127,16 +127,16 @@
   </div>
 </section>
 
-<!-- Section 3: Method Figure 2 -->
+<!-- Method -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Fig. 2 — From terabytes to real time</h2>
-        <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
           <p>
-            <strong>Caption:</strong> Heterogeneous logs are standardized (sample rate + Cartesian EEF actions) and stored two ways: raw data in a Trajectory DB and embeddings in a Vector DB. At test time we run a hierarchical search—dataset-centroid filter → small local index → cosine k-NN—to fetch a snippet and replay its action vectors for the next N steps. This replaces per-step model calls and keeps lookups sub-second at million scale.
+            Heterogeneous logs are standardized (sample rate + Cartesian EEF actions) and stored two ways: raw data in a Trajectory DB and embeddings in a Vector DB. At test time we run a hierarchical search—dataset-centroid filter → small local index → cosine k-NN—to fetch a snippet and replay its action vectors for the next N steps. This replaces per-step model calls and keeps lookups sub-second at million scale.
           </p>
         </div>
       </div>
@@ -144,67 +144,45 @@
   </div>
 </section>
 
-<!-- Section 4: Result Figure 4 -->
+<!-- Experiments -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Fig. 4 — Bowl-reach: outcomes, speed, and path quality</h2>
+        <h2 class="title is-3">Experiments</h2>
+        
+        <h3 class="title is-4">Bowl-reach: Outcomes, Speed, and Path Quality</h3>
         <img src="static/images/fig4.png" style="width: 100%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <div class="content has-text-justified">
           <p>
-            <strong>Caption:</strong> (a) Outcome matrix: RT-Cache succeeds across more camera views/placements than VINN; Behavior-Retrieval and OpenVLA-OFT often exit OOS (out-of-workspace). (b) Successful trials finish faster with RT-Cache (lower median, tighter spread) because multi-step replay reduces corrective micro-moves. (c) 3D paths: RT-Cache closely tracks ground truth while VINN drifts.
+            We evaluate RT-Cache on a bowl-reaching task across multiple camera views and placements. RT-Cache succeeds across more camera views/placements than VINN; Behavior-Retrieval and OpenVLA-OFT often exit out-of-workspace. Successful trials finish faster with RT-Cache (lower median, tighter spread) because multi-step replay reduces corrective micro-moves. The 3D path analysis shows RT-Cache closely tracks ground truth while VINN drifts.
           </p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Section 5: Result Figure 5 -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Fig. 5 — Ablations and qualitative analysis</h2>
+        <br>
+        <h3 class="title is-4">Ablations and Qualitative Analysis</h3>
         <img src="static/images/fig5.png" style="width: 100%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <div class="content has-text-justified">
           <p>
-            <strong>Caption:</strong> (A) Object robustness: with a few in-domain episodes, RT-Cache is reliable across bowl/cup/bottle and views. (B) Horizon sensitivity: choosing snippet length N trades speed vs reactivity; N=3 is a good balance in our setup. (C) Viewpoint-aligned replay: retrieval stays within the active camera and advances coherently over steps. (D) Typical failures: near-misses or minor pose offsets under occlusion or viewpoint change.
+            We conduct comprehensive ablation studies to understand RT-Cache's behavior. With a few in-domain episodes, RT-Cache is reliable across bowl/cup/bottle and views. Our horizon sensitivity analysis shows that choosing snippet length N trades speed vs reactivity; N=3 is a good balance in our setup. Viewpoint-aligned replay ensures retrieval stays within the active camera and advances coherently over steps. Typical failures include near-misses or minor pose offsets under occlusion or viewpoint change.
           </p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Section 6: Result Figure 6 -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Fig. 6 — Single-episode anchoring (pushing task)</h2>
+        <br>
+        <h3 class="title is-4">Single-Episode Anchoring</h3>
         <img src="static/images/fig6.png" style="width: 100%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <div class="content has-text-justified">
           <p>
-            <strong>Caption:</strong> With no in-domain data, we add one short example to memory—no training, no fine-tuning. RT-Cache retrieves that exemplar and replays it to produce a trajectory that qualitatively matches ground truth, demonstrating immediate adaptation through retrieval-as-control.
+            We demonstrate immediate adaptation through retrieval-as-control on a pushing task. With no in-domain data, we add one short example to memory—no training, no fine-tuning. RT-Cache retrieves that exemplar and replays it to produce a trajectory that qualitatively matches ground truth, showcasing the power of our training-free approach.
           </p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Section 7: Efficiency Table -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Table I — Compute & storage budget</h2>
+        <br>
+        <h3 class="title is-4">Computational Efficiency</h3>
         <img src="static/images/table1.png" style="width: 80%; height: auto; border-radius: 8px;" />
-        <div class="content has-text-justified" style="margin-top: 20px;">
+        <div class="content has-text-justified">
           <p>
-            <strong>Caption:</strong> RT-Cache runs on 8–10 GB GPU and shifts cost to storage (≈ 100 GB for embeddings/metadata). It performs no gradient updates at deployment (frozen encoders; build ANN index only), unlike VINN/Behavior-Retrieval/OpenVLA-OFT which require training or fine-tuning. Net: we trade SSD space for lower online compute and real-time control.
+            RT-Cache runs on 8–10 GB GPU and shifts cost to storage (≈ 100 GB for embeddings/metadata). It performs no gradient updates at deployment (frozen encoders; build ANN index only), unlike VINN/Behavior-Retrieval/OpenVLA-OFT which require training or fine-tuning. This compute-storage tradeoff enables real-time control on modest hardware.
           </p>
         </div>
       </div>
@@ -212,79 +190,69 @@
   </div>
 </section>
 
-<!-- Section 8: Main Workflow Video -->
+<!-- Qualitative Results -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Main Workflow</h2>
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/0JpAhpyIkLo" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen style="border-radius: 8px;"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+        <h2 class="title is-3">Qualitative Results</h2>
+        
+        <h3 class="title is-4">RT-Cache Workflow</h3>
+        <div class="content has-text-justified has-text-centered">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/0JpAhpyIkLo" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p>Overview of the RT-Cache retrieval-as-control pipeline in action, demonstrating multi-step snippet replay for robot manipulation tasks.</p>
+        </div>
 
-<!-- Section 9: Comparing Results -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Comparing Results</h2>
+        <br>
+        <h3 class="title is-4">Baseline Comparisons</h3>
         <div class="columns">
           <div class="column">
-            <h3 class="title is-4">VINN Failure</h3>
+            <h4 class="title is-5">VINN Failure</h4>
             <iframe width="100%" height="350" src="https://www.youtube.com/embed/pWgg2CqvoFY" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen style="border-radius: 8px;"></iframe>
           </div>
           <div class="column">
-            <h3 class="title is-4">Behavior Retrieval Failure</h3>
+            <h4 class="title is-5">Behavior Retrieval Failure</h4>
             <iframe width="100%" height="350" src="https://www.youtube.com/embed/XI5nWP60XmI" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen style="border-radius: 8px;"></iframe>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="content has-text-justified">
+          <p>Comparison with baseline methods shows RT-Cache's robustness. VINN and Behavior Retrieval often fail due to single-step retrieval and lack of coherent action sequences.</p>
+        </div>
 
-<!-- Section 10: Faster Actions -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Faster Actions</h2>
+        <br>
+        <h3 class="title is-4">Execution Speed Analysis</h3>
         <div class="columns">
           <div class="column">
-            <h3 class="title is-4">Normal Speed</h3>
+            <h4 class="title is-5">Normal Speed</h4>
             <iframe width="100%" height="350" src="https://www.youtube.com/embed/bZ33AAch6AY" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen style="border-radius: 8px;"></iframe>
           </div>
           <div class="column">
-            <h3 class="title is-4">Fast Speed</h3>
+            <h4 class="title is-5">Fast Speed</h4>
             <iframe width="100%" height="350" src="https://www.youtube.com/embed/IX9aDMdD_SM" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen style="border-radius: 8px;"></iframe>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="content has-text-justified">
+          <p>RT-Cache enables faster task completion through multi-step replay. The coherent action sequences reduce corrective micro-movements and improve execution efficiency.</p>
+        </div>
 
-<!-- Section 11: Unseen Objects -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Unseen Objects</h2>
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/XPnO6Tkmmns" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen style="border-radius: 8px;"></iframe>
+        <br>
+        <h3 class="title is-4">Generalization to Unseen Objects</h3>
+        <div class="content has-text-justified has-text-centered">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XPnO6Tkmmns" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p>RT-Cache demonstrates strong generalization capabilities to novel objects and environments, leveraging the diverse experience stored in memory to handle unseen scenarios.</p>
+        </div>
       </div>
     </div>
   </div>
