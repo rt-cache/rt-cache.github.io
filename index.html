@@ -54,24 +54,23 @@
             <span class="author-block">
               <a href="#">Owen Kwon</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="#">Abraham George</a><sup>2</sup>,</span>
+              <a href="#">Abraham George</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="#">Alison Bartsch</a><sup>2</sup>,</span>
+              <a href="#">Alison Bartsch</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="#">Amir Barati Farimani</a><sup>1,2</sup>
+              <a href="#">Amir Barati Farimani</a><sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Carnegie Mellon University,</span>
-            <span class="author-block"><sup>2</sup>Carnegie Mellon University</span>
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="assets/rt_cache_paper.pdf"
+                <a href="https://arxiv.org/pdf/2505.09040"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -79,28 +78,9 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/0000.00000"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/your-org/rt-cache"
+                <a href="https://github.com/Oyeon/rtcache.git"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -108,15 +88,6 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://rt-cache.github.io/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-database"></i>
-                  </span>
-                  <span>Project</span>
-                  </a>
             </div>
 
           </div>
@@ -126,14 +97,20 @@
   </div>
 </section>
 
+<section class="hero teaser teaser-video">
+  <div class="container is-max-desktop has-text-centered">
+    <div class="hero-body">
+      <iframe width="80%" height="450" src="https://www.youtube.com/embed/7mLlhhwMFM8?autoplay=1&mute=1&loop=1&playlist=7mLlhhwMFM8" 
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen style="border-radius: 8px;"></iframe>
+    </div>
+  </div>
+</section>
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div style="height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/7mLlhhwMFM8" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen style="border-radius: 8px; max-width: 100%; max-height: 100%;"></iframe>
-      </div>
+      <img src="static/images/fig1.png" style="width: 100%; height: auto; border-radius: 8px;" />
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">RT‑Cache</span> turns experience into a real‑time controller
         through multi‑step retrieval‑as‑control.
@@ -142,14 +119,45 @@
   </div>
 </section>
 
-
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
-      <div style="height: 300px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #ddd; margin: 20px 0;">
-        <div style="text-align: center; color: #666;">
-          <h3 style="margin: 0; font-size: 18px;">Results Gallery</h3>
-          <p style="margin: 5px 0 0 0; font-size: 14px;">To be updated soon</p>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-workflow has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/0JpAhpyIkLo" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">RT-Cache Workflow</p>
+        </div>
+        <div class="item item-normal has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/bZ33AAch6AY" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">Normal Speed Execution</p>
+        </div>
+        <div class="item item-fast has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/IX9aDMdD_SM" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">Fast Speed Execution</p>
+        </div>
+        <div class="item item-unseen has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/XPnO6Tkmmns" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">Unseen Objects Generalization</p>
+        </div>
+        <div class="item item-vinn has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/pWgg2CqvoFY" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">VINN Baseline Failure</p>
+        </div>
+        <div class="item item-behavior has-text-centered">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/XI5nWP60XmI" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen style="border-radius: 8px;"></iframe>
+          <p style="margin-top: 10px; font-weight: bold;">Behavior Retrieval Failure</p>
         </div>
       </div>
     </div>
@@ -183,6 +191,22 @@
       </div>
     </div>
     <!--/ Abstract. -->
+
+    <!-- Method -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig2.png" style="width: 100%; height: auto; border-radius: 8px;" />
+          <p style="margin-top: 20px;">
+            <strong>RT-Cache Architecture:</strong> Our training-free retrieval-as-control pipeline consists of three main components: 
+            (1) a unified vector memory that stores diverse image-action trajectories, (2) hierarchical search for efficient retrieval 
+            at million scale, and (3) multi-step snippet replay that replaces per-step model inference with cached action sequences.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method -->
 
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
@@ -312,6 +336,49 @@
     </div>
     <!--/ Animation. -->
 
+    <!-- Results -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+        
+        <h3 class="title is-4">Performance Comparison</h3>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig4.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+          <p>
+            <strong>Real Robot Evaluation:</strong> RT-Cache achieves significantly higher success rates compared to baseline retrieval methods 
+            across multiple manipulation tasks, demonstrating the effectiveness of multi-step snippet replay.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Generalization Results</h3>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig5.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+          <p>
+            <strong>Cross-Environment Generalization:</strong> Our method shows robust performance across different environments 
+            and object configurations, maintaining high success rates even with unseen objects and backgrounds.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Ablation Study</h3>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/fig6.png" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+          <p>
+            <strong>Component Analysis:</strong> Ablation results demonstrate the importance of each component in our pipeline, 
+            with hierarchical search and multi-step replay contributing significantly to overall performance.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Efficiency Analysis</h3>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/table1.png" style="width: 80%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+          <p>
+            <strong>Computational Efficiency:</strong> RT-Cache achieves real-time control with significantly lower inference times 
+            compared to transformer-based policies while maintaining higher success rates.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Results -->
 
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
@@ -346,10 +413,10 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{rtcache2025,
+    <pre><code>@article{kwon2025rtcache,
   title={RT-Cache: Training-Free Retrieval for Real-Time Manipulation},
   author={Kwon, Owen and George, Abraham and Bartsch, Alison and Farimani, Amir Barati},
-  journal={arXiv preprint arXiv:2501.01234},
+  journal={arXiv preprint arXiv:2505.09040},
   year={2025}
 }</code></pre>
   </div>
